@@ -91,4 +91,45 @@ the pressure ratio in different angle can be calculated. Additionally, the tappi
     \end{tabular}}
     \end{table}
 
-    
+Based on table a, Pressure distributions are plotted as a graph of the pressure ratio, which at 8 different angles with $x/c$ as the x-axis and $C_p$ as the y-axis.
+\includepdf[pages=1]{output.pdf}
+
+By using the $C_L$ formular, We can calculate lift coefficient $C_l$.
+
+$$
+C_{L}={\frac{F_{L}}{{\frac{1}{2}}\rho U^{2}A}}
+$$
+
+Noticed that A is the plan area of the aerofoil. By using mathematical method this can be evaluated by given equation:
+
+$$
+C_{L}=\int\left[C_{p l}\left(\frac{x}{c}\right)-C_{p u}\left(\frac{x}{c}\right)\right]d\left(\frac{x}{c}\right)
+$$
+
+However, an important point to note is that a direct integration requires a continuous function. In order to find the solution, we use discrete data points to evaluate the $C_L$ by using \textbf{trapezoidal rule}. So, the discrete version of the integral becomes:
+
+$$
+\Delta C_{L}=\sum\left(\frac{C_{pl,i+1}+C_{pl,i}}{2}-\frac{C_{p u ,i+1}+C_{p u ,i}}{2}\right)\left(x_{i+1}-x_{i}\right)
+$$
+Where $i$ is the index of the data points. The results show in a table below.
+
+\begin{table}[]
+    \resizebox{1\textwidth}{!}{
+    \begin{tabular}{@{}ccccccccc@{}}\toprule
+     Degree    & 0        & 5        & 10       & 15       & 17.5     & 20       & 22.5     & 25       \\\midrule
+    $C_L$ & -0.040 & 0.383 & 0.676 & 0.939 & 1.015 & 0.840 & 0.828 & 0.830\\\bottomrule
+    \end{tabular}}
+    \end{table}
+
+    \begin{figure}[htb] % Here, top, bottom priority list
+        \centering
+        \includegraphics[scale=0.45]{CL.png}
+        \caption{Experimental Demonstration}
+        \label{fig:demo}
+    \end{figure}
+
+
+
+\subsection*{Error analysis}
+
+
