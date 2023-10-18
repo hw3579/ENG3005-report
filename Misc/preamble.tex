@@ -1,0 +1,57 @@
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % Change this to norwegian if report is written in norwegian
+\usepackage{amsmath}   % Package for math files
+\usepackage{parskip}   % No indent, but instead paragraphs
+\usepackage{graphicx}  % Place figures
+\usepackage{caption}   % Place captions in tables and figures
+\usepackage{subcaption}% 
+\usepackage{subfiles}  % 
+%\usepackage{subfigure}
+\usepackage{pdfpages}
+\usepackage[T1]{fontenc} 
+\usepackage[euler]{textgreek} % To get greek letters as we know them
+\usepackage{amssymb}   % 
+\usepackage{placeins}  % \FloatBarrier so figures can't float beyond some point in text
+\usepackage{fullpage}  % Uses more of the page
+\usepackage{float}     % Able to make figures and tables float \begin{figure}[H] to keep them HERE
+\usepackage[version=4]{mhchem} % \ce{} to write chemical eq.
+\usepackage{siunitx}   % Ex: \si{\meter\per\square\second}
+\usepackage{booktabs}  % Behind-the-scenes optimization of tables. \toprule, \midrule, \bottomrule
+\usepackage{multirow}
+\usepackage{hyperref}  % Ability to click on references like equations, figures, sections etc. \ref{eq:my_eq} clickable
+
+%表格自动生成
+\renewcommand {\thetable} {\thechapter{}.\arabic{table}}
+%表格根据章节自动命名
+\renewcommand {\thefigure} {\thechapter{}.\arabic{figure}}
+%图片根据章节自动命名
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\numberwithin{equation}{section}
+%以上三个皆控制重命名
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\iffalse
+\usepackage{fancyhdr}
+	%fancyhdr：一个很强大的宏包，用于自定义设计页面风格并命名以供调用。
+	\pagestyle{fancy}
+	%\rhead{实验B16 基于vLight的光学仿真基础实验}
+	%\lhead{基础物理实验\uppercase\expandafter{\romannumeral2}实验报告}
+	\cfoot{ \thepage}  %当前页
+	\rfoot{\today}
+		%分别是右页眉、左页眉、中页脚、右页脚
+	\renewcommand{\headrulewidth}{0pt}
+	%\renewcommand{\theenumi}{(\arabic{enumi})}
+\fi
+
+\usepackage[autolinebreaks,useliterate,numbered]{mcode} % Ability to paste smooth MATLAB code
+\newcommand{\figref}[1]{\figurename~\ref{#1}} %Nice reference to figures

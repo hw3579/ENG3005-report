@@ -1,0 +1,60 @@
+\section{Task 1}
+\FloatBarrier % Now figures cannot float above section title
+
+
+\subsection{Originality and uniqueness of the robot}
+
+Our robot's uniqueness lies in the fact that it is a four-arm robot. Although two-arm and three-arm robots can perform the same tasks, they are relatively unstable and more difficult to control. In addition, a four-arm robot can provide a larger workspace and a greater potential for improvement.
+
+\subsection{Property of all the arms and the joints}
+
+We have designed 4 joints for the robot, 2 of which are revolute type and 2 are prismatic type. At the same time, there are four corresponding robotic arms, whose parameters are shown in the Table \ref{T 2.1} and Table \ref{T 2.2}.
+
+Furthermore, in order to make the robot operate more stably, we assumed the relevant data of the robot arms, and after simulation, the data we obtained is reasonable.
+
+\begin{minipage}[htbp]{\textwidth}
+    \makeatletter\def\@captype{table}
+    \centering
+    \scalebox{0.9}{
+    \begin{tabular}{cccc}
+    \hline
+    Name & Body Mass (kg) & Center of mass & Inertia ($I_{xx}$ $I_{yy}$ $I_{zz}$) ($kg \cdot m^2$)                  \\ \hline
+    R1   & 10        & (0 0 0)        & (0.27 0.27 0.8 )     \\
+    R2   & 10        & (0 0 0)        & (0.27 0.27 0.8 )     \\
+    P1   & 1.5       & (0 0 0)        & (0.07 0.07 0.07 )    \\
+    P2   & 1.5       & (0 0 0)        & (0.07 0.07 0.07 )    \\
+    Tool & 1.2       & (0 0 0)        & (0.002 0.002 0.004 ) \\ \hline
+    \end{tabular}} 
+    \caption{Robot arm parameters}
+    \label{T 2.1} 
+\end{minipage}
+
+
+\begin{minipage}[htbp]{\textwidth}
+    \makeatletter\def\@captype{table}
+    \centering
+    \scalebox{1}{
+    \begin{tabular}{cccc}
+    \hline
+    Joint & Type & Position Limit (rad \& m) & Joint Axis                   \\ \hline
+    1   & revolute       & $[-5\frac{\pi}{180}, 5\frac{\pi}{180}]$ & [0 0 1]     \\
+    2   & revolute       & $[-30\frac{\pi}{180}, 30\frac{\pi}{180}]$        & [0 1 0]     \\
+    3   & prismatic      & $[-0.5,0.5]$        & [1 0 0]    \\
+    4   & prismatic      & $[-1, 1]$        & [0 1 0]    \\ 
+    Fixed &revolute & N/A & N/A \\\hline
+    \end{tabular}} 
+    \caption{Joint parameters}
+    \label{T 2.2} 
+\end{minipage}
+
+Figure \ref{F 2.1} is a schematic diagram of the robot in MATLAB.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=7cm]{./fig/1.jpg}
+    \caption{Robot schematic}
+    \label{F 2.1}
+\end{figure}
+
+\subsection{Collision discussion}
+
+Our designed robot is free from collisions. In most cases, collisions occur on the two arms of the rotating joints whose rotation angle is greater than $±90^\circ$. For our designed robot, the total range of motion for the two movable joints is $±35^\circ$, so there is no collision. Additionally, the animation of the robot's movement trajectory can be viewed in the dynamic image in Figure 8 (After running the matlab code).
