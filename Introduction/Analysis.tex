@@ -1,9 +1,9 @@
 \section{Analysis}
-\FloatBarrier % Now figures cannot float above section title
+%\FloatBarrier % Now figures cannot float above section title
 Next the experimental data were processed. Firstly the difference in water head was calculated for each sampling point on tapping position by using the Pitot tube at atmospheric pressure as a standard value. The difference in water head was then converted to a difference in pressure by equation $P_n=\rho gh$, as shown in \autoref{t5.1} below.
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[]
+\begin{table}[htbp]
     \caption{Preliminary processing of experimental data (Unit: Pa)} 
 	\label{t5.1}
     \resizebox{1\textwidth}{!}{
@@ -52,7 +52,7 @@ And from \autoref{cpn},
     \label{cpn}
     C_{p,n}={\frac{p_n-p_{eff}}{{\frac{1}{2}}\rho u_{\infty}^{2}}}
     \end{equation}
-the pressure ratio in different angle can be calculated. Additionally, the tapping position and airfoil chord for the different sampling points can be obtained from the appendix which is in handbook, and the $x/c$ can be calculated.
+the pressure ratio in different angle can be calculated. Additionally, the tapping position and aerofoil chord for the different sampling points can be obtained from the appendix which is in handbook, and the $x/c$ can be calculated.
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[htbp]
@@ -77,7 +77,7 @@ Based on \autoref{t5.3}, Pressure distributions are plotted as a graph of the pr
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\textwidth]{output.eps}
-    \caption{Pressure distribution over airfoil}
+    \caption{Pressure distribution over aerofoil}
     \label{cp}
   \end{figure}
 By using the \autoref{cl}, We can calculate lift coefficient $C_L$.
@@ -107,8 +107,7 @@ Where $i$ is the index of the data points. The results show in \autoref{t5.4}.
 
 \begin{figure}[htb] % Here, top, bottom priority list
         \centering
-        \includegraphics[scale=0.45]{CL.eps}
-        \caption{Experimental Demonstration}
+        \includegraphics[scale=0.6]{CL.eps}
+        \caption{CL vs Angle}
         \label{tcl}
 \end{figure}
-

@@ -42,7 +42,7 @@ for i = 1:8
     plot(xq_lower_surface, yq_lower_surface, '--', 'LineWidth', 1.5);  % Plot the lower surface
     xlabel('Chord Position $x/c$', 'Interpreter', 'latex');    % Label for x-axis
     ylabel('Pressure Coefficient $C_p$', 'Interpreter', 'latex');  % Label for y-axis
-    title('Pressure Distribution Over Airfoil');  % Title for the graph
+    title('Pressure Distribution Over aerofoil');  % Title for the graph
     legend('Lower Surface', 'Upper Surface');  % Legends
     grid on;
 
@@ -55,7 +55,7 @@ for i = 1:8
     xticks([0 0.5 1]);
     yticks([-4:1:4]);
         % Add title from the angleTitles list
-    title(['Pressure Distribution Over Airfoil - ', angleTitles{i}]);
+    title(['Pressure Distribution Over aerofoil - ', angleTitles{i}]);
 end
 
 % Save and print the figure
