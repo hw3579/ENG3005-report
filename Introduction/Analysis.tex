@@ -28,6 +28,7 @@ Based on the \autoref{t5.1}, it was able to calculate the effective static press
     \label{Peff}
    p_{eff}=p_{0}+\frac{85}{135}\times(p_{a}-p_{0})
     \end{equation}
+($P_0$ is the inlet pressure)
 And calculate free stream velocity $U_\infty$ by given \autoref{Uinf} in different angle.
 \begin{equation}
     \label{Uinf}
@@ -36,8 +37,14 @@ And calculate free stream velocity $U_\infty$ by given \autoref{Uinf} in differe
 The results are shown in the following \autoref{t5.2}.
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
+And from \autoref{cpn},
+\begin{equation}
+    \label{cpn}
+    C_{p,n}={\frac{p_n-p_{eff}}{{\frac{1}{2}}\rho u_{\infty}^{2}}}
+    \end{equation}
+the pressure ratio in different angle can be calculated. Additionally, the tapping position and aerofoil chord for the different sampling points can be obtained from the appendix which is in handbook, and the $x/c$ can be calculated. The initial and final points of the curves (0, 0) and (1, 0) have been added to the figures according to the lab handbook. The images are connected by using a smooth curve (Piecewise Cubic Hermite Interpolating Polynomial) as shown in \autoref{t5.3}.\footnote{Regression analysis is not applicable to smooth curve fitting.}
 \begin{table}[htbp]
-    \caption{$p_{eff}$ and $U_\infty$ in different angle(Unit: Pa and m/s)} 
+    \caption{$p_{eff}$ and $U_\infty$ in different angle (Unit: Pa and m/s)} 
 	\label{t5.2}
     \resizebox{1\textwidth}{!}{
     \begin{tabular}{@{}ccccccccc@{}}\toprule
@@ -46,17 +53,8 @@ The results are shown in the following \autoref{t5.2}.
     $U_\infty$ & 30.11847 & 29.77471 & 29.42693 & 28.71875 & 28.35803 & 26.48081 & 25.69155 & 25.52602\\\bottomrule
     \end{tabular}}
     \end{table}
-
-And from \autoref{cpn},
-\begin{equation}
-    \label{cpn}
-    C_{p,n}={\frac{p_n-p_{eff}}{{\frac{1}{2}}\rho u_{\infty}^{2}}}
-    \end{equation}
-the pressure ratio in different angle can be calculated. Additionally, the tapping position and aerofoil chord for the different sampling points can be obtained from the appendix which is in handbook, and the $x/c$ can be calculated.
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
 \begin{table}[htbp]
-    \caption{Pressure ratio in different angle and degree} 
+    \caption{Pressure ratio ($C_p$) in different angle and degree} 
 	\label{t5.3}
     \resizebox{1\textwidth}{!}{
     \begin{tabular}{@{}ccccccccccccc@{}}\toprule
@@ -89,13 +87,13 @@ Noticed that A is the plan area of the aerofoil. By using mathematical method, t
 $$
 C_{L}=\int\left[C_{p l}\left(\frac{x}{c}\right)-C_{p u}\left(\frac{x}{c}\right)\right]d\left(\frac{x}{c}\right)
 $$
-However, an important point to note is that a direct integration requires a continuous function. In order to find the solution, we use discrete data points to evaluate the $C_L$ by using \textbf{trapezoidal rule}. So, the discrete version of the integral becomes:
+However, an important point to note is that a direct integration requires a continuous function. In order to find the solution, we use discrete data points to evaluate the $C_L$ by using trapezoidal rule. So, the discrete version of the integral becomes:
 $$
 \Delta C_{L}=\sum\left(\frac{C_{pl,i+1}+C_{pl,i}}{2}-\frac{C_{p u ,i+1}+C_{p u ,i}}{2}\right)\left(x_{i+1}-x_{i}\right)
 $$
-Where $i$ is the index of the data points. The results show in \autoref{t5.4}.
+Where $i$ is the index of the data points. The results show in \autoref{t5.4} and \autoref{tcl}.
 \begin{table}[]
-    \caption{Lift coefficient in different angle} 
+    \caption{Lift coefficient ($C_L$) in different angle} 
 	\label{t5.4}
     \centering
     \resizebox{0.8\textwidth}{!}{
@@ -107,7 +105,7 @@ Where $i$ is the index of the data points. The results show in \autoref{t5.4}.
 
 \begin{figure}[htb] % Here, top, bottom priority list
         \centering
-        \includegraphics[scale=0.6]{CL.eps}
-        \caption{CL vs Angle}
+        \includegraphics[scale=0.5]{CL.eps}
+        \caption{$C_L$ vs Angle}
         \label{tcl}
 \end{figure}

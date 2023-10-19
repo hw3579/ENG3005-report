@@ -37,8 +37,8 @@ end
 figure; % 打开新的图形窗口
 plot(angles, -CL, '-o', 'LineWidth', 1.5); % 使用 '-o' 参数来绘制线和标记
 xlabel('Angle (degrees)'); % x轴标签
-ylabel('CL'); % y轴标签
-title('CL vs Angle'); % 图的标题
+ylabel('$C_L$','Interpreter','latex'); % y轴标签
+title('$C_L$ vs Angle',Interpreter='latex'); % 图的标题
 grid on; % 打开网格
 print('cl.eps', '-depsc');
 

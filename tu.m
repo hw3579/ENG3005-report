@@ -43,7 +43,7 @@ for i = 1:8
     xlabel('Chord Position $x/c$', 'Interpreter', 'latex');    % Label for x-axis
     ylabel('Pressure Coefficient $C_p$', 'Interpreter', 'latex');  % Label for y-axis
     title('Pressure Distribution Over aerofoil');  % Title for the graph
-    legend('Lower Surface', 'Upper Surface');  % Legends
+    legend('Upper Surface','Lower Surface');  % Legends
     grid on;
 
     % Reverse the y-axis direction to match the graphs and set y-axis limits
