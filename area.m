@@ -1,3 +1,5 @@
+
+
 % Data
 angles = [0, 5, 10, 15, 17.5, 20, 22.5, 25];
 x_over_c = [0.016, 0.071, 0.175, 0.317, 0.510, 0.698, 0.032, 0.119, 0.230, 0.413, 0.603, 0.794];
@@ -21,22 +23,55 @@ for idx = 1:length(angles)
     x_lower_surface = x_over_c(7:end);
     y_lower_surface = Cp_values(idx, 7:end);
 
-    % Interpolation for both groups
-    xq_upper_surface = linspace(min(x_upper_surface), max(x_upper_surface), 500);
-    yq_upper_surface = interp1(x_upper_surface, y_upper_surface, xq_upper_surface, 'pchip');
-    xq_lower_surface = linspace(min(x_lower_surface), max(x_lower_surface), 500);
-    yq_lower_surface = interp1(x_lower_surface, y_lower_surface, xq_lower_surface, 'pchip');
+    % Spline fit for both groups
+    spline_upper = @(x) ppval(spline(x_upper_surface, y_upper_surface), x);
+    spline_lower = @(x) ppval(spline(x_lower_surface, y_lower_surface), x);
 
-    % Calculate the area between the curves
-    area_between_curves = trapz(xq_upper_surface, yq_upper_surface - yq_lower_surface);
+    % Define the function representing the difference between the upper and lower surface splines
+    diff_splines = @(x) spline_upper(x) - spline_lower(x);
+
+    % Calculate the area between the curves using Romberg method
+    area_between_curves = romberg(diff_splines, min(x_over_c), max(x_over_c), 4);
     CL(idx) = area_between_curves;
+    fprintf('Angle: %.2f, CL: %.4f\n', angles(idx), CL(idx));
 end
 
 % Plotting
 figure;
-plot(angles, CL, '-o');
+plot(angles, CL, '-*','Color','r');
 xlabel('Angle (degrees)');
 ylabel('CL');
 title('CL vs. Angle');
 
 grid on;
+
+function result = romberg(f, a, b, n)
+    % f: function to be integrated
+    % a, b: integration limits
+    % n: number of iterations
+
+    R = zeros(n, n);
+    h = b - a;
+    
+    % Initialize the R(1, 1) entry
+    R(1, 1) = h / 2 * (f(a) + f(b));
+    
+    for j = 2:n
+        h = h / 2;
+        sum = 0;
+        for k = 1:2^(j-2)
+            sum = sum + f(a + (2*k-1)*h);
+        end
+        
+        % Trapezoidal rule
+        R(j, 1) = 1/2 * R(j-1, 1) + sum * h;
+        
+        % Richardson extrapolation
+        for k = 2:j
+            R(j, k) = (4^(k-1) * R(j, k-1) - R(j-1, k-1)) / (4^(k-1) - 1);
+        end
+    end
+    
+    result = R(n, n);
+end
+

@@ -33,6 +33,13 @@ for j = 1:length(angles)
     fprintf('Angle: %.1f, CL: %.3f\n', angles(j), CL(j));
 end
 
-
+% 绘制图像
+figure; % 打开新的图形窗口
+plot(angles, -CL, '-o', 'LineWidth', 1.5); % 使用 '-o' 参数来绘制线和标记
+xlabel('Angle (degrees)'); % x轴标签
+ylabel('CL'); % y轴标签
+title('CL vs Angle'); % 图的标题
+grid on; % 打开网格
+print('cl.eps', '-depsc');
 
 
