@@ -1,14 +1,15 @@
 
 xx = [0.016 0.071 0.175 0.317 0.510 0.698 0.032 0.119 0.230 0.413 0.603 0.794];
 yy = [
-    0.135 -0.560 -0.613 -0.505 -0.342 -0.162 -0.036 -0.541 -0.559 -0.397 -0.288 -0.072;
-    0.852 0.110 -0.203 -0.203 -0.148 -0.074 -1.143 -1.254 -0.996 -0.701 -0.332 -0.111;
-    -0.850 0.585 0.208 0.019 0.038 0.019 -2.417 -1.850 -1.510 -0.755 -0.415 -0.113;
-    1.000 0.913 0.515 0.258 0.159 0.059 -3.430 -2.617 -1.388 -0.793 -0.396 -0.159;
-    0.959 1.019 0.630 0.346 0.203 0.081 -3.619 -2.928 -1.362 -0.773 -0.427 -0.163;
-    1.070 1.103 0.723 0.443 0.256 0.093 -0.699 -0.746 -0.746 -0.769 -0.746 -0.653;
-    1.099 1.223 0.842 0.570 0.347 0.149 -0.545 -0.594 -0.594 -0.644 -0.644 -0.594;
-    1.025 1.340 1.004 0.778 0.477 0.251 -0.351 -0.401 -0.427 -0.452 -0.552 -0.552;
+0.133	-0.517989727	-0.477510001	-0.497749864	-0.356070823	-0.254871508	-0.194151919	-0.598949179	-0.558469453	-0.396550549	-0.33583096	-0.052472878;
+0.94	0.075336003	-0.171241063	-0.253433418	-0.21233724	-0.171241063	-1.280837859	-1.321934036	-1.034260793	-0.664395194	-0.417818128	-0.171241063;
+0.9	0.52009266	0.123647466	-0.001545753	-0.064142363	-0.105873436	-2.526275672	-1.858578503	-1.524729919	-0.731839531	-0.43972202	-0.168470045;
+0.839	0.663548193	0.200926959	0.074757532	-0.030383658	-0.135524848	-3.079478156	-2.217320402	-1.207964982	-0.703287271	-0.493004892	-0.303750751;
+0.818	0.76687557	0.258240451	0.173467931	0.025116022	-0.080849628	-2.963115304	-2.221355755	-1.055733607	-0.589484747	-0.504712228	-0.419939708;
+0.859	0.757353123	0.227941756	0.139706528	0.007353686	-0.213234384	-0.8970574	-0.985292628	-0.852939786	-0.764704558	-0.67646933	-0.499998875;
+0.9	0.753318078	0.259954233	0.170251716	0.035697941	-0.143707094	-0.59221968	-0.547368421	-0.547368421	-0.547368421	-0.637070938	-0.547368421;
+0.92	0.839038926	0.379150144	0.287172388	0.149205753	-0.034749759	-0.54062742	-0.54062742	-0.494638541	-0.517632981	-0.586616298	-0.54062742;
+
 ];
 
 angleTitles = {'0°', '5°', '10°', '15°', '17.5°', '20°', '22.5°', '25°'};
@@ -31,17 +32,17 @@ for i = 1:8
 
     % Interpolation for both groups
     xq_upper_surface = linspace(min(x_upper_surface), max(x_upper_surface), 500);
-    yq_upper_surface = interp1(x_upper_surface, y_upper_surface, xq_upper_surface, 'pchip');
+    yq_upper_surface = interp1(x_upper_surface, y_upper_surface, xq_upper_surface,'linear');
 
     xq_lower_surface = linspace(min(x_lower_surface), max(x_lower_surface), 500);
-    yq_lower_surface = interp1(x_lower_surface, y_lower_surface, xq_lower_surface, 'pchip');
+    yq_lower_surface = interp1(x_lower_surface, y_lower_surface, xq_lower_surface,'linear');
 
     % Plot
     hold on;
-    plot(xq_upper_surface, yq_upper_surface, '-', 'LineWidth', 1.5);   % Plot the upper surface
-    plot(xq_lower_surface, yq_lower_surface, '--', 'LineWidth', 1.5);  % Plot the lower surface
-    xlabel('Chord Position $x/c$', 'Interpreter', 'latex');    % Label for x-axis
-    ylabel('Pressure Coefficient $C_p$', 'Interpreter', 'latex');  % Label for y-axis
+    plot(xq_upper_surface, yq_upper_surface, '-', 'LineWidth', 1,'Color','r');   % Plot the upper surface
+    plot(xq_lower_surface, yq_lower_surface, '-', 'LineWidth', 1,'Color','black');  % Plot the lower surface
+    xlabel(' $x/c$', 'Interpreter', 'latex');    % Label for x-axis
+    ylabel(' $C_p$', 'Interpreter', 'latex');  % Label for y-axis
     title('Pressure Distribution Over aerofoil');  % Title for the graph
     legend('Upper Surface','Lower Surface');  % Legends
     grid on;
@@ -55,7 +56,7 @@ for i = 1:8
     xticks([0 0.5 1]);
     yticks([-4:1:4]);
         % Add title from the angleTitles list
-    title(['Pressure Distribution Over aerofoil - ', angleTitles{i}]);
+    title(['Pressure Distribution- ', angleTitles{i}]);
 end
 
 % Save and print the figure
